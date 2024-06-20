@@ -1,0 +1,34 @@
+DATABASE=mongodb+srv://instasif:chandpurasi@cluster0.2lbo3hl.mongodb.net/inventory-management?retryWrites=true&w=majority&appName=Cluster0
+
+PORT=5000
+
+
+//jokhon ek ta id dhore oi idr data update kora lagbe
+/*
+{
+  "ids": [
+    {
+      "id": "666242882a89db26d0a2d7d0",
+      "data": {
+        "price": 120
+      }
+    },
+    {
+      "id": "66637ded03644f1900e4457d",
+      "data": {
+        "price": 1200000
+      }
+    }
+  ]
+}
+*/
+
+/*
+jokhon onek gula product ek shathe delete korte hobe
+{
+  "ids": [
+    "66638ae88061d805d82f7733",
+    "6663785298c0361694045481"
+    ]
+}
+*/
