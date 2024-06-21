@@ -8,7 +8,7 @@ exports.getProductService = async (filters, quaries) => {
     .select(quaries.fields)
     .sort(quaries.sortBy);
   const total = await Product.countDocuments(filters);
-  const page = await Math.ceil(totalProducts / quaries.limit);
+  const page = await Math.ceil(total / quaries.limit);
   return { total, page, product };
 };
 
