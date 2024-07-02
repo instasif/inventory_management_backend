@@ -6,6 +6,9 @@ router
   .route("/")
   .post(brandCotroller.createBrand)
   .get(brandCotroller.getBrands);
-router.route("/:id").get(brandCotroller.getBrandById);
+router
+  .route("/:id")
+  .get(brandCotroller.getBrandById)
+  .patch(brandCotroller.updateBrand);
 
 module.exports = router;

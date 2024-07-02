@@ -56,3 +56,27 @@ exports.createBrand = async (req, res, next) => {
     });
   }
 };
+
+exports.updateBrand = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const data = req.body;
+    const result = await brandServices.updateBrandService(id, data);
+    if (!result.nModified) {
+      return res.status(400).json({
+        status: "failed",
+        error: "couldn't update the brand by this id",
+      });
+    }
+    res.status(200).json({
+      status: "success",
+      message: "Successfully updated the brand",
+      result: result,
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: "failed",
+      error: "couldn't update the brand",
+    });
+  }
+};

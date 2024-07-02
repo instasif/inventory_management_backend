@@ -15,4 +15,7 @@ exports.getBrandByIdService = async (id) => {
   return result;
 };
 
-//06 Create Brand Routes 19:26 / 23:40
+exports.updateBrandService = async (id, data) =>{
+  const result = await Brand.updateOne({_id: id}, data);
+  return result
+}
