@@ -1,3 +1,4 @@
+const Brand = require("../models/Brand");
 const Product = require("../models/Products");
 
 exports.getProductService = async (filters, quaries) => {
@@ -14,7 +15,17 @@ exports.getProductService = async (filters, quaries) => {
 
 exports.createAProductService = async (data) => {
   const product = await Product.create(data);
-  return product;
+  const { _id: productId, brand } = product;
+
+  //Todo:  save the product id on the dedicated brand name data
+  const res = await Brand.updateOne(
+    //?kon brand a save korte chacchi
+    { _id: brand.id },
+    //?kon product ta save korte chacchi
+    { $push: { products: productId } }
+  );
+  console.log(res);
+  return product, res;
 };
 
 exports.updateAProductService = async (productId, data) => {

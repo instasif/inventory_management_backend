@@ -57,6 +57,7 @@ exports.createAProduct = async (req, res, next) => {
     //! create
     const result = await productServices.createAProductService(req.body);
     result.logger();
+
     //! save
     // const product = new Product(req.body);
 
@@ -71,7 +72,7 @@ exports.createAProduct = async (req, res, next) => {
     res.status(400).json({
       status: "failed",
       message: "Data isn't inserted",
-      error: error.message,
+      error: error,
     });
   }
 };
@@ -161,3 +162,11 @@ exports.bulkDeleteProducts = async (req, res, next) => {
     });
   }
 };
+
+exports.fileUpload = async(req, res, next) =>{
+  try {
+    res.status(200).json(req.files)
+  } catch (error) {
+    
+  }
+}
