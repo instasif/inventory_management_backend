@@ -1,15 +1,53 @@
 const Stock = require("../models/Stock");
+const mongoose = require("mongoose");
+const objectId = mongoose.Types.ObjectId;
 
 exports.getStockService = async (filters, quaries) => {
-  console.log(quaries);
   const product = await Stock.find(filters)
     .skip(quaries.skip)
     .limit(quaries.limit)
     .select(quaries.fields)
     .sort(quaries.sortBy);
+
+  // const stocks = await Stock.aggregate([
+  //   { $match: { "store.name": "chottogram" } },
+  // ]);
+
   const total = await Stock.countDocuments(filters);
-  const page = await Math.ceil(total / quaries.limit);
+  const page = Math.ceil(total / quaries.limit); //await
   return { total, page, product };
+};
+
+exports.getStocksById = async (id) => {
+  // const stock = await Stock.findOne({ _id: id })
+  //   .populate("store.id")
+  //   .populate("supplier.id")
+  //   .populate("brand.id");
+
+  //Todo: (Aggregate))
+  const stock = await Stock.aggregate([
+    //!stage1
+    { $match: { _id: objectId(id) } },
+    {
+      $project: {
+        name: 1,
+        productId: 1,
+        price: 1,
+        category: 1,
+        quantity: 1,
+      },
+    },
+    {
+      $lookup: {
+        from: "brands",
+        localField: "brand.name",
+        foreignField: "name",
+        as: "brandDetails",
+      },
+    },
+  ]);
+
+  return stock;
 };
 
 exports.createAStockService = async (data) => {
@@ -24,8 +62,8 @@ exports.updateAStockService = async (productId, data) => {
     { runValidators: true }
   );
 
-//   const product = await Stock.findById(productId);
-//   const result = await Stock.set(data).save();
+  //   const product = await Stock.findById(productId);
+  //   const result = await Stock.set(data).save();
   return result;
 };
 

@@ -12,6 +12,7 @@ router
 
 router
   .route("/:id")
+  .get(stockController.getstoksById)
   .patch(stockController.updateAStock)
   .delete(stockController.deleteStockById);
 

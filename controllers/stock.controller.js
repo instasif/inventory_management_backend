@@ -51,6 +51,30 @@ exports.getStocks = async (req, res, next) => {
   }
 };
 
+exports.getstoksById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const stock = await stockServices.getStocksById(id);
+    if (!stock) {
+      res.status(400).json({
+        status: "failed",
+        error: "Data couldn't get the stock with this id",
+      });
+    }
+    res.status(200).json({
+      status: "success",
+      message: "All the datas",
+      data: stock,
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: "failed",
+      message: "Data couldn't find by id",
+      error: error.message,
+    });
+  }
+};
+
 exports.createAStock = async (req, res, next) => {
   try {
     //! create
