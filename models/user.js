@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const validator = require("validator");
+const bcrypt = require("bcryptjs");
 
 const userSchema = mongoose.Schema(
   {
@@ -80,6 +81,16 @@ const userSchema = mongoose.Schema(
     timestamps: true,
   }
 );
+
+userSchema.pre("save", function (next) {
+  if (!this.isModified("password")) return next();
+  
+  const password = this.password;
+  const hashPassword = bcrypt.hashSync(password);
+  this.password = hashPassword;
+  this.confirmPassword = undefined;
+  next();
+});
 
 const User = mongoose.model("User", userSchema);
 module.exports = User;
