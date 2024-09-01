@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const validator = require("validator");
-const bcrypt = require("bcryptjs");
+const bcrypt = require("bcrypt");
 
 const userSchema = mongoose.Schema(
   {
@@ -82,11 +82,11 @@ const userSchema = mongoose.Schema(
   }
 );
 
-userSchema.pre("save", function (next) {
+userSchema.pre("save", async function (next) {
   if (!this.isModified("password")) return next();
-  
+
   const password = this.password;
-  const hashPassword = bcrypt.hashSync(password);
+  const hashPassword = await bcrypt.hash(password, 10);
   this.password = hashPassword;
   this.confirmPassword = undefined;
   next();

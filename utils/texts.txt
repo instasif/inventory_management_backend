@@ -35,3 +35,17 @@ jokhon onek gula product ek shathe delete korte hobe
 
 MongoDB aggregation pipeline
 https://youtu.be/vx1C8EyTa7Y?si=L1EZS3Cm1PzP77f7
+
+
+
+{
+    "email": "mezba12@testa.com",
+    "password": "mezba123456#A",
+    "confirmPassword": "mezba123456#A",
+    "firstName": "Mezbaul Abedin",
+    "lastName": "Fohan",
+    "shippingAddress": "944 osthir Street",
+    "presentAddress": "944 Osthir Street",
+    "permanentAddress": "944 Russell Street",
+    "imageURL": "https://i.ibb.co/WnFSS9Y/unnamed.webp"
+}
