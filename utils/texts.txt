@@ -33,9 +33,6 @@ jokhon onek gula product ek shathe delete korte hobe
 }
 */
 
-MongoDB aggregation pipeline
-https://youtu.be/vx1C8EyTa7Y?si=L1EZS3Cm1PzP77f7
-
 
 
 {

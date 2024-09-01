@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const productController = require("../controllers/product.controller");
 const uploader = require("../middleware/uploader");
+const { ensureAuthenticated } = require("../middleware/ensureAuthenticated");
 
 router.post(
   "/file-upload",
@@ -14,7 +15,7 @@ router.route("/bulk-delete").delete(productController.bulkDeleteProducts);
 
 router
   .route("/")
-  .get(productController.getProducts)
+  .get(ensureAuthenticated, productController.getProducts)
   .post(productController.createAProduct);
 
 router
