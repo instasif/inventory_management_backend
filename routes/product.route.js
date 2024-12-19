@@ -15,7 +15,7 @@ router.route("/bulk-delete").delete(productController.bulkDeleteProducts);
 
 router
   .route("/")
-  .get(ensureAuthenticated, productController.getProducts)
+  .get(productController.getProducts)
   .post(productController.createAProduct);
 
 router

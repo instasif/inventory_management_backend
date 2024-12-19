@@ -15,7 +15,7 @@ exports.getProducts = async (req, res, next) => {
       (match) => `$${match}`
     );
     filters = JSON.parse(filtersString);
-    // console.log(filters);
+    
     //Todo---> price, quantity => price quantity
     const quaries = {};
     if (req.query.sort) {

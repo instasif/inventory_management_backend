@@ -8,12 +8,12 @@ router.route("/bulk-delete").delete(stockController.bulkDeleteStocks);
 
 router
   .route("/")
-  .get(ensureAuthenticated, stockController.getStocks)
+  .get(stockController.getStocks)
   .post(stockController.createAStock);
 
 router
   .route("/:id")
-  .get(ensureAuthenticated, stockController.getstoksById)
+  .get(stockController.getstoksById)
   .patch(stockController.updateAStock)
   .delete(stockController.deleteStockById);
 

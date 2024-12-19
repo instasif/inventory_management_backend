@@ -92,7 +92,7 @@ const productSchema = mongoose.Schema(
 //TODO: mongoose middlewares  for saving date: pre / post
 
 productSchema.pre("save", function (next) {
-  console.log("before saving data");
+  
   if (this.quantity === 0) {
     this.status = "out-of-stock";
   }

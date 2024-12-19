@@ -2,7 +2,7 @@ const Brand = require("../models/Brand");
 const Product = require("../models/Products");
 
 exports.getProductService = async (filters, quaries) => {
-  console.log(quaries);
+  
   const product = await Product.find(filters)
     .skip(quaries.skip)
     .limit(quaries.limit)
@@ -24,7 +24,7 @@ exports.createAProductService = async (data) => {
     //?kon product ta save korte chacchi
     { $push: { products: productId } }
   );
-  console.log(res);
+  
   return product, res;
 };
 

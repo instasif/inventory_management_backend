@@ -6,10 +6,10 @@ const { ensureAuthenticated } = require("../middleware/ensureAuthenticated");
 router
   .route("/")
   .post(brandCotroller.createBrand)
-  .get(ensureAuthenticated, brandCotroller.getBrands);
+  .get(brandCotroller.getBrands);
 router
   .route("/:id")
-  .get(ensureAuthenticated, brandCotroller.getBrandById)
+  .get(brandCotroller.getBrandById)
   .patch(brandCotroller.updateBrand);
 
 module.exports = router;

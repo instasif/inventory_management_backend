@@ -35,7 +35,7 @@ exports.logIn = async (req, res) => {
     }
 
     const iseEqualPassword = await bcrypt.compare(password, dbUser.password);
-    console.log(iseEqualPassword);
+    
     if (!iseEqualPassword) {
       return res.status(403).json({
         message: errorMsg,

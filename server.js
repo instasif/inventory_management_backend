@@ -4,7 +4,7 @@ const colors = require("colors");
 
 const app = require("./app");
 
-mongoose.connect(process.env.DATABASE, {
+mongoose.connect(process.env.DATABASE_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 }).then(() => {
